@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23918047796748334}
   m_Layer: 0
   m_Name: Side3
-  m_TagString: Side3
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 23293306292349230}
   m_Layer: 0
   m_Name: Side6
-  m_TagString: Side6
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 23522501397911520}
   m_Layer: 0
   m_Name: Side1
-  m_TagString: Side1
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 4152113593065356}
   m_Layer: 0
   m_Name: PlayerRotater
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 23108316283399918}
   m_Layer: 0
   m_Name: Side4
-  m_TagString: Side4
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 114829624949602612}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 23333178383108414}
   m_Layer: 0
   m_Name: Side5
-  m_TagString: Side5
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 23383095372786846}
   m_Layer: 0
   m_Name: Side2
-  m_TagString: Side2
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -626,3 +626,9 @@ MonoBehaviour:
   gridLowerZLimit: -0.5
   playerGameObject: {fileID: 1684339999245178}
   animator: {fileID: 95183796250835512}
+  side1: {fileID: 1498719538948842}
+  side2: {fileID: 1845468715710004}
+  side3: {fileID: 1093822297027642}
+  side4: {fileID: 1728128234422612}
+  side5: {fileID: 1807955894508656}
+  side6: {fileID: 1320761304934604}

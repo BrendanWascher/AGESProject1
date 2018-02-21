@@ -10,6 +10,7 @@ TagManager:
   - Side4
   - Side5
   - Side6
+  - Player1
   layers:
   - Default
   - TransparentFX
