@@ -91,7 +91,7 @@ MeshCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1332025209222876}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -110,4 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 23894510942765118}
-  player1: {fileID: 0}
+  player1Material: {fileID: 2100000, guid: eb228ff114c58e34bb51c8562804414c, type: 2}
+  player2Material: {fileID: 2100000, guid: 0799d2899487dc64c9a2df3576b5a560, type: 2}
+  player3Material: {fileID: 2100000, guid: ee0688b6e9c0f864584d6e909eb5056f, type: 2}
+  player4Material: {fileID: 2100000, guid: 55cd41269523a9949ae4c6bda185c154, type: 2}

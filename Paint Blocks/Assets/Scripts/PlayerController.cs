@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject side1, side2, side3, side4, side5, side6;
 
+    [SerializeField]
+    private Text playerUIText;
+
     private float curXCoord = 2.5f;
     private float curZCoord = .5f;
 
@@ -32,14 +36,13 @@ public class PlayerController : MonoBehaviour
 
     private bool isButtonPressed = false;
 
-	// Use this for initialization
 	void Start ()
     {
         animator = GetComponent<Animator>();
-        //gameObject = GetComponent<GameObject>();
+
+        playerUIText.text = "Player " + playerNumber;
     }
 	
-	// Update is called once per frame
 	void Update ()
     {
         GetInput();

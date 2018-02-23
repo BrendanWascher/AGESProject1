@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 707, y: 471}
   m_MaxSize: {x: 18002, y: 14021}
   vertical: 0
-  controlID: 14268
+  controlID: 14528
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -122,10 +122,10 @@ MonoBehaviour:
     y: 0
     width: 1160
     height: 947
-  m_MinSize: {x: 202, y: 442}
-  m_MaxSize: {x: 4002, y: 8042}
+  m_MinSize: {x: 202, y: 421}
+  m_MaxSize: {x: 4002, y: 8021}
   vertical: 1
-  controlID: 14269
+  controlID: 14507
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,8 +144,8 @@ MonoBehaviour:
     y: 0
     width: 1160
     height: 486
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 7}
   m_Panes:
   - {fileID: 5}
@@ -237,14 +237,14 @@ MonoBehaviour:
     height: 465
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 295.9839413023897
+  lastFramingTime: 21179.43172282008
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 4.0558243, y: -2.9738374, z: 1.9421673}
+    m_Target: {x: 4.0078225, y: 1.9142885, z: 1.4026647}
     speed: 2
-    m_Value: {x: 4.0558243, y: -2.9738374, z: 1.9421673}
+    m_Value: {x: 4.0078225, y: 1.9142885, z: 1.4026647}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -268,13 +268,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.12636825, y: 0.8681885, z: -0.2831987, w: -0.38739952}
+    m_Target: {x: 0.06246139, y: -0.9352007, z: 0.20992523, w: 0.27826184}
     speed: 2
-    m_Value: {x: -0.12636825, y: 0.8681885, z: -0.2831987, w: -0.38739952}
+    m_Value: {x: -0.06246139, y: 0.9352007, z: -0.20992523, w: -0.27826184}
   m_Size:
-    m_Target: 17.97086
+    m_Target: 1.8863678
     speed: 2
-    m_Value: 17.97086
+    m_Value: 1.8863678
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -416,7 +416,7 @@ MonoBehaviour:
   m_MinSize: {x: 230, y: 471}
   m_MaxSize: {x: 10000, y: 14021}
   vertical: 1
-  controlID: 14226
+  controlID: 14529
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -470,10 +470,10 @@ MonoBehaviour:
     height: 438
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
-    scrollPos: {x: 0, y: 1387}
-    m_SelectedIDs: 6cf8ffff
-    m_LastClickedID: -1940
-    m_ExpandedIDs: 6af8ffff6cf8ffff9efbffff00000000cc2d0000
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 343ff9ff
+    m_LastClickedID: -442572
+    m_ExpandedIDs: 2e58fcff3e6afcff8c60feffa0c4feff12f9ffff9efbffff00000000ee2c0000362d00003c2d0000a62d00002e2e00005e2e0000b22e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -561,19 +561,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts
+    - Assets/Materials
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\brend\Desktop\Projects\Unity\AGESProject1\Paint Blocks
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 9a2b0000
-    m_LastClickedID: 11162
-    m_ExpandedIDs: 000000007a280000602b000000ca9a3bffffff7f
+    m_SelectedIDs: 742b0000
+    m_LastClickedID: 11124
+    m_ExpandedIDs: 000000007c280000642b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -601,7 +601,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000007a280000602b000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000007c280000642b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -626,9 +626,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 6cf8ffff
-    m_LastClickedInstanceID: -1940
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 343ff9ff
+    m_LastClickedInstanceID: -442572
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: fcd1ffff
     m_RenameOverlay:
       m_UserAcceptedRename: 0

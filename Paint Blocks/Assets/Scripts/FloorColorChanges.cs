@@ -8,22 +8,22 @@ public class FloorColorChanges : MonoBehaviour
     private Renderer renderer;
 
     [SerializeField]
-    private GameObject player1;
-
-    /*
-    [SerializeField]
-    private GameObject player2;
+    private Material player1Material;
 
     [SerializeField]
-    private GameObject player3;
+    private Material player2Material;
 
     [SerializeField]
-    private GameObject player4;  
-    */
+    private Material player3Material;
 
-    private GameObject playerChild;
+    [SerializeField]
+    private Material player4Material;
 
-    private Renderer childRenderer;
+    private GameObject playerGameObject;
+
+    private Renderer playerRenderer;
+
+    private Material previousMaterial;
 
     private Color clear;
 
@@ -32,113 +32,88 @@ public class FloorColorChanges : MonoBehaviour
     private bool isPlayerThree = false;
     private bool isPlayerFour = false;
 
+    private string playerTag;
+    private string lastPlayertag;
+
+    public static int player1Count;
+    public static int player2Count;
+    public static int player3Count;
+    public static int player4Count;
+
 	// Use this for initialization
 	void Start ()
     {
         clear = Color.white;
         renderer.material.color = clear;
+
+        player1Count = 0;
+        player2Count = 0;
+        player3Count = 0;
+        player4Count = 0;
 	}
 
-    private void OnCollisionEnter(Collision col)
+    private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("Contact with ground");
+        //Debug.Log("Contact with ground");
 
-        if (col.gameObject.tag == "Player1")
-        {
-            isPlayerOne = true;
-        }
-        else if (col.gameObject.tag == "Player2")
-        {
-            isPlayerTwo = true;
-        }
-        else if(col.gameObject.tag == "Player3")
-        {
-            isPlayerThree = true;
-        }
-        else if(col.gameObject.tag == "Player4")
-        {
-            isPlayerFour = true;
-        }
-        else
-        {
-            Debug.Log("Error. Unknown Player");
-        }
-        PlayerCollision();
+        ChangeColor(collider);
     }
 
-    private void PlayerCollision()
+    private void ChangeColor(Collider col)
     {
-        if (isPlayerOne || isPlayerTwo || isPlayerThree || isPlayerFour)
+        playerGameObject = col.gameObject;
+        playerRenderer = playerGameObject.GetComponent<Renderer>();
+
+        if (renderer.material.color == clear)
         {
-            CheckAllChildren();
-            if (renderer.material.color == clear)
-            {
-                renderer.material.color = childRenderer.material.color;
-                childRenderer.material.color = clear;
-            }
-            else if (childRenderer.material.color == clear)
-            {
-                childRenderer.material.color = renderer.material.color;
-            }
+            renderer.material.color = playerRenderer.material.color;
+            playerRenderer.material.color = clear;
+            UpdatePlayerCount(true);
+        }
+        else if (playerRenderer.material.color == clear)
+        {
+            playerRenderer.material.color = renderer.material.color;
+        }
+        else if(playerRenderer.material.color != renderer.material.color)
+        {
+            UpdatePlayerCount(false);
+            renderer.material.color = playerRenderer.material.color;
+            UpdatePlayerCount(true);
+            playerRenderer.material.color = clear;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void UpdatePlayerCount(bool isGiving)
     {
-        Debug.Log("On Trigger Enter Called");
-    }
+        Debug.Log("UpdatePlayerCount was called");
 
-    private void CheckAllChildren()
-    {
-        Vector3 bottom = new Vector3(0, 0, 0);
-
-        if(isPlayerOne)
+        if(renderer.material.color == player1Material.color)
         {
-            foreach (GameObject child in player1.transform)
-            {
-                if (child.transform.position == bottom)
-                {
-                    playerChild = child;
-                }
-            }
-            isPlayerOne = false;
+            if (isGiving)
+                player1Count++;
+            else
+                player1Count--;
         }
-        /*
-        else if (isPlayerTwo)
+        else if(renderer.material.color == player2Material.color)
         {
-            foreach (GameObject child in player2.transform)
-            {
-                if (child.transform.position == bottom)
-                {
-                    playerChild = child;
-                }
-            }
-            isPlayerTwo = false;
+            if (isGiving)
+                player2Count++;
+            else
+                player2Count--;
         }
-        else if(isPlayerThree)
+        else if(renderer.material.color == player3Material.color)
         {
-            foreach (GameObject child in player3.transform)
-            {
-                if (child.transform.position == bottom)
-                {
-                    playerChild = child;
-                }
-            }
-            isPlayerThree = false;
+            if (isGiving)
+                player3Count++;
+            else
+                player3Count--;
         }
-        else if(isPlayerFour)
+        else if(renderer.material.color == player4Material.color)
         {
-            foreach (GameObject child in player4.transform)
-            {
-                if (child.transform.position == bottom)
-                {
-                    playerChild = child;
-                }
-            }
-            isPlayerFour = false;
+            if (isGiving)
+                player4Count++;
+            else
+                player4Count--;
         }
-        */
-
-        childRenderer = playerChild.GetComponent<Renderer>();        
     }
 }
