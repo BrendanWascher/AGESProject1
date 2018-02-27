@@ -23,16 +23,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
-    [SerializeField]
-    private GameObject side1, side2, side3, side4, side5, side6;
+    [HideInInspector]
+    public Material playerMaterial;
 
-    [SerializeField]
-    private Text playerUIText;
+    [HideInInspector]
+    public GameObject camera;
 
-    private float curXCoord = 2.5f;
-    private float curZCoord = .5f;
+    public float curXCoord = 2.5f;
+    public float curZCoord = .5f;
 
-    private int playerNumber = 1;
+    public int playerNumber = 1;
+
+    public Renderer[] renderers;
 
     private bool isButtonPressed = false;
 
@@ -40,7 +42,14 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        playerUIText.text = "Player " + playerNumber;
+        renderers = playerGameObject.GetComponentsInChildren<Renderer>();
+        for(int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].material = playerMaterial;
+        }
+
+        curXCoord = gameObject.transform.position.x;
+        curZCoord = gameObject.transform.position.z;
     }
 	
 	void Update ()
@@ -54,6 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         CheckPressed();
         CheckReleased();
+        UpdateLocation();
     }
 
     private void CheckPressed()
@@ -106,6 +116,12 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isPlayerMovingDown", false);
             */
         }
+    }
+
+    private void UpdateLocation()
+    {
+        curXCoord = gameObject.transform.position.x;
+        curZCoord = gameObject.transform.position.z;
     }
 
     private void MoveRight()

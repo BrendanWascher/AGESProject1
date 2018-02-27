@@ -19,6 +19,11 @@ public class FloorColorChanges : MonoBehaviour
     [SerializeField]
     private Material player4Material;
 
+    [SerializeField]
+    private ParticleSystem paintSplash;
+
+    private ParticleSystemRenderer splash;
+
     private GameObject playerGameObject;
 
     private Renderer playerRenderer;
@@ -46,6 +51,8 @@ public class FloorColorChanges : MonoBehaviour
         clear = Color.white;
         renderer.material.color = clear;
 
+        splash = GetComponent<ParticleSystemRenderer>();
+
         player1Count = 0;
         player2Count = 0;
         player3Count = 0;
@@ -57,6 +64,8 @@ public class FloorColorChanges : MonoBehaviour
         //Debug.Log("Contact with ground");
 
         ChangeColor(collider);
+
+
     }
 
     private void ChangeColor(Collider col)
@@ -67,6 +76,11 @@ public class FloorColorChanges : MonoBehaviour
         if (renderer.material.color == clear)
         {
             renderer.material.color = playerRenderer.material.color;
+
+            splash.material = renderer.material;
+            if (renderer.material.color != clear)
+                paintSplash.Play();
+
             playerRenderer.material.color = clear;
             UpdatePlayerCount(true);
         }
@@ -78,14 +92,25 @@ public class FloorColorChanges : MonoBehaviour
         {
             UpdatePlayerCount(false);
             renderer.material.color = playerRenderer.material.color;
+
+            splash.material = renderer.material;
+            if(renderer.material.color != clear)
+                paintSplash.Play();
+
             UpdatePlayerCount(true);
             playerRenderer.material.color = clear;
+        }
+        else
+        {
+            splash.material = renderer.material;
+            if (renderer.material.color != clear)
+                paintSplash.Play();
         }
     }
 
     private void UpdatePlayerCount(bool isGiving)
     {
-        Debug.Log("UpdatePlayerCount was called");
+        //Debug.Log("UpdatePlayerCount was called");
 
         if(renderer.material.color == player1Material.color)
         {
@@ -116,4 +141,5 @@ public class FloorColorChanges : MonoBehaviour
                 player4Count--;
         }
     }
+
 }
