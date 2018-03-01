@@ -1410,7 +1410,7 @@ MonoBehaviour:
   playerGameObject: {fileID: 1684339999245178}
   animator: {fileID: 95183796250835512}
   playerMaterial: {fileID: 2100000, guid: d4d930413a986454791248ed014f788a, type: 2}
-  playerUIText: {fileID: 114172570491883114}
+  camera: {fileID: 0}
   curXCoord: 2.5
   curZCoord: 0.5
   playerNumber: 1
@@ -1426,7 +1426,7 @@ MonoBehaviour:
   m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!114 &114874951283684500
@@ -1456,7 +1456,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9a71acd913872e4aa839908d01f02f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
   text: {fileID: 114172570491883114}
   playerController: {fileID: 114829624949602612}
 --- !u!222 &222427382934267516

@@ -9,8 +9,10 @@ public class PlayerManager
 
     public Material playerMaterial;
     public Transform playerSpawnPoint;
-    public GameObject camera;
+
+    [HideInInspector] public GameObject camera;
     [HideInInspector] public int playerNumber;
+    [HideInInspector] public string coloredPlayerText;
     [HideInInspector] public GameObject playerInstance;
     [HideInInspector] public int numberOfWins;
 
@@ -25,6 +27,9 @@ public class PlayerManager
         playerController.playerNumber = playerNumber;
         playerController.playerMaterial = playerMaterial;
         playerController.camera = camera;
+
+        coloredPlayerText = "<color=#" + ColorUtility.ToHtmlStringRGB(playerMaterial.color)
+            + ">PLAYER " + playerNumber + "</color>";
 
         MeshRenderer[] renderers = playerInstance.GetComponentsInChildren<MeshRenderer>();
 
