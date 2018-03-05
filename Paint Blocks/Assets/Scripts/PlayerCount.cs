@@ -26,7 +26,7 @@ public class PlayerCount : MonoBehaviour
     {
         if (FloorColorChanges.player1Count != 0)
         {
-            player1Text.text = "Player 1 Count: " +
+            player1Text.text = "Player 1 Total: " +
                 FloorColorChanges.player1Count.ToString();
         }
         else
@@ -34,7 +34,7 @@ public class PlayerCount : MonoBehaviour
 
         if (FloorColorChanges.player2Count != 0)
         {
-            player2Text.text = "Player 2 Count: " +
+            player2Text.text = "Player 2 Total: " +
                 FloorColorChanges.player2Count.ToString();
         }
         else
@@ -42,7 +42,7 @@ public class PlayerCount : MonoBehaviour
 
         if (FloorColorChanges.player3Count != 0)
         {
-            player3Text.text = "Player 3 Count: " +
+            player3Text.text = "Player 3 Total: " +
                 FloorColorChanges.player3Count.ToString();
         }
         else
@@ -50,7 +50,7 @@ public class PlayerCount : MonoBehaviour
 
         if (FloorColorChanges.player4Count != 0)
         {
-            player4Text.text = "Player 4 Count: " +
+            player4Text.text = "Player 4 Total: " +
                 FloorColorChanges.player4Count.ToString();
         }
         else

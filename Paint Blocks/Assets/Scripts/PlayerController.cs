@@ -36,17 +36,15 @@ public class PlayerController : MonoBehaviour
 
     public Renderer[] renderers;
 
+    public string lastDirectionMoved = null;
+
     private bool isButtonPressed = false;
 
 	void Start ()
     {
         animator = GetComponent<Animator>();
 
-        renderers = playerGameObject.GetComponentsInChildren<Renderer>();
-        for(int i = 0; i < renderers.Length; i++)
-        {
-            renderers[i].material = playerMaterial;
-        }
+        SetPlayerColor();
 
         curXCoord = gameObject.transform.position.x;
         curZCoord = gameObject.transform.position.z;
@@ -59,6 +57,15 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Update in Player Controller Called");
 	}
 
+    public void SetPlayerColor()
+    {
+        renderers = playerGameObject.GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].material = playerMaterial;
+        }
+    }
+
     private void GetInput()
     {
         CheckPressed();
@@ -70,43 +77,39 @@ public class PlayerController : MonoBehaviour
     {
         if(!isButtonPressed)
         {
-            if (Input.GetButtonDown("Horizontal" + playerNumber))
+            //Debug.Log(isButtonPressed);
+            if (Input.GetAxis("Horizontal" + playerNumber) > 0
+                && curZCoord < gridUpperZLimit)
             {
-                if (Input.GetAxis("Horizontal" + playerNumber) > 0
-                    && curZCoord < gridUpperZLimit)
-                {
-                    isButtonPressed = true;
-                    MoveRight();
-                }
-                else if (Input.GetAxis("Horizontal" + playerNumber) < 0
-                    && curZCoord > gridLowerZLimit)
-                {
-                    isButtonPressed = true;
-                    MoveLeft();
-                }
+                isButtonPressed = true;
+                MoveRight();
+                Debug.Log("Move Right");
             }
-            else if(Input.GetButtonDown("Vertical" + playerNumber))
+            else if (Input.GetAxis("Horizontal" + playerNumber) < 0
+                && curZCoord > gridLowerZLimit)
             {
-                if(Input.GetAxis("Vertical" + playerNumber) > 0
-                    && curXCoord > gridLowerXLimit)
-                {
-                    isButtonPressed = true;
-                    MoveDown();
-                }
-                else if(Input.GetAxis("Vertical" + playerNumber) < 0
-                    && curXCoord < gridUpperXLimit)
-                {
-                    isButtonPressed = true;
-                    MoveUp();
-                }
+                isButtonPressed = true;
+                MoveLeft();
+            }
+            else if(Input.GetAxis("Vertical" + playerNumber) > 0
+                && curXCoord > gridLowerXLimit)
+            {
+                isButtonPressed = true;
+                MoveUp();
+            }
+            else if(Input.GetAxis("Vertical" + playerNumber) < 0
+                && curXCoord < gridUpperXLimit)
+            {
+                isButtonPressed = true;
+                MoveDown();
             }
         }
     }
 
     private void CheckReleased()
     {
-        if ((Input.GetButtonUp("Horizontal" + playerNumber)) || 
-            (Input.GetButtonUp("Vertical" + playerNumber)))
+        if ((Input.GetAxis("Horizontal" +playerNumber)) == 0 && 
+            (Input.GetAxis("Vertical"+playerNumber)) == 0)
         {
             isButtonPressed = false;
             /*
@@ -129,9 +132,10 @@ public class PlayerController : MonoBehaviour
         //animator.SetBool("isPlayerMovingRight", true);
         gameObject.transform.Translate(0f, 0f, 1f);
         playerGameObject.transform.Rotate(90f, 0f, 0f, Space.World);
-        curZCoord++;
+        lastDirectionMoved = "Right";
+        //curZCoord++;
 
-        Debug.Log("Z coord is " + curZCoord);
+        //Debug.Log("Z coord is " + curZCoord);
     }
 
     private void MoveLeft()
@@ -139,28 +143,31 @@ public class PlayerController : MonoBehaviour
         //animator.SetBool("isPlayerMovingLeft", true);
         gameObject.transform.Translate(0f, 0f, -1f);
         playerGameObject.transform.Rotate(-90f, 0f, 0f, Space.World);
-        curZCoord--;
+        lastDirectionMoved = "Left";
+        //curZCoord--;
 
-        Debug.Log("Z coord is " + curZCoord);
-    }
-
-    private void MoveUp()
-    {
-        //animator.SetBool("isPlayerMovingDown", true);
-        gameObject.transform.Translate(1f, 0f, 0f);
-        playerGameObject.transform.Rotate(0f, 0f, -90f, Space.World);
-        curXCoord++;
-
-        Debug.Log("X coord is " + curXCoord);
+        //Debug.Log("Z coord is " + curZCoord);
     }
 
     private void MoveDown()
     {
+        //animator.SetBool("isPlayerMovingDown", true);
+        gameObject.transform.Translate(1f, 0f, 0f);
+        playerGameObject.transform.Rotate(0f, 0f, -90f, Space.World);
+        lastDirectionMoved = "Down";
+        //curXCoord++;
+
+        //Debug.Log("X coord is " + curXCoord);
+    }
+
+    private void MoveUp()
+    {
         //animator.SetBool("isPlayerMovingUp", true);
         gameObject.transform.Translate(-1f, 0f, 0f);
         playerGameObject.transform.Rotate(0f, 0f, 90f, Space.World);
-        curXCoord--;
+        lastDirectionMoved = "Up";
+        //curXCoord--;
 
-        Debug.Log("X coord is " + curXCoord);
+        //Debug.Log("X coord is " + curXCoord);
     }
 }

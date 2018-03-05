@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    //this class is based off of the Tank Tutorials "TankManager"
+    //class in the tanks tutorial on the Unity Website
+
     [SerializeField]
     private float dampTime = 0.2f;
 

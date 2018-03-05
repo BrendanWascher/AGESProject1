@@ -5,17 +5,15 @@ using UnityEngine.UI;
 
 public class GameTimer : MonoBehaviour
 {
-    private static float timeRemaining;
-    public static float startTimer;
-    public static bool isTimeUp;
-    public static bool hasStarted;
+    public static float timeRemaining = 90f;
+    public static float startTimer = 3f;
+    [HideInInspector] public static bool isTimeUp;
+    [HideInInspector] public static bool hasStarted;
 	
 	void Start ()
     {
-        timeRemaining = 90f;
         isTimeUp = false;
         hasStarted = false;
-        startTimer = 3f;
 	}
 	
 	// Update is called once per frame
@@ -45,7 +43,7 @@ public class GameTimer : MonoBehaviour
             hasStarted = false;
         }
 
-        Debug.Log(timeRemaining);
+        //Debug.Log(timeRemaining);
         //Debug.Log(startTimer);
 
     }

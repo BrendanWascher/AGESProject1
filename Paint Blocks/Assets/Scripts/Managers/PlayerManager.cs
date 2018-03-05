@@ -58,6 +58,8 @@ public class PlayerManager
         playerInstance.transform.position = playerSpawnPoint.position;
         playerInstance.transform.rotation = playerSpawnPoint.rotation;
 
+        playerController.SetPlayerColor();
+
         playerInstance.SetActive(false);
         playerInstance.SetActive(true);
     }

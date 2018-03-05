@@ -32,11 +32,6 @@ public class FloorColorChanges : MonoBehaviour
 
     private Color clear;
 
-    private bool isPlayerOne = false;
-    private bool isPlayerTwo = false;
-    private bool isPlayerThree = false;
-    private bool isPlayerFour = false;
-
     private string playerTag;
     private string lastPlayertag;
 
@@ -64,8 +59,6 @@ public class FloorColorChanges : MonoBehaviour
         //Debug.Log("Contact with ground");
 
         ChangeColor(collider);
-
-
     }
 
     private void ChangeColor(Collider col)
@@ -140,6 +133,11 @@ public class FloorColorChanges : MonoBehaviour
             else
                 player4Count--;
         }
+    }
+
+    public void Reset()
+    {
+        renderer.material.color = clear;   
     }
 
 }
