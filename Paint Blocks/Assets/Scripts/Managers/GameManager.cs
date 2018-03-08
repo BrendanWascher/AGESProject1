@@ -44,9 +44,15 @@ public class GameManager : MonoBehaviour
         SpawnAllPlayers();
         SetCameraTargets();
         SetScores();
+        OverlapChecker.Setup();
 
         StartCoroutine(GameLoop());
 	}
+
+    private void FixedUpdate()
+    {
+        UpdatePlayerLocations();
+    }
 
     private void SpawnAllPlayers()
     {
@@ -266,6 +272,17 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < numberOfPlayers; i++)
         {
             players[i].DisableControl();
+        }
+    }
+
+    private void UpdatePlayerLocations()
+    {
+        for(int i = 0; i < numberOfPlayers; i++)
+        {
+            float X = players[i].GetXCoord();
+            float Z = players[i].GetZCoord();
+            OverlapChecker.playerLocations[i, 0] = X;
+            OverlapChecker.playerLocations[i, 1] = Z;
         }
     }
 }

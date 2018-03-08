@@ -53,8 +53,6 @@ public class PlayerController : MonoBehaviour
 	void Update ()
     {
         GetInput();
-
-        //Debug.Log("Update in Player Controller Called");
 	}
 
     public void SetPlayerColor()
@@ -77,31 +75,41 @@ public class PlayerController : MonoBehaviour
     {
         if(!isButtonPressed)
         {
-            //Debug.Log(isButtonPressed);
             if (Input.GetAxis("Horizontal" + playerNumber) > 0
                 && curZCoord < gridUpperZLimit)
             {
-                isButtonPressed = true;
-                MoveRight();
-                Debug.Log("Move Right");
+                if (OverlapChecker.CheckOverlap(playerNumber-1, "Z", curZCoord + 1,curXCoord))
+                {
+                    isButtonPressed = true;
+                    MoveRight();
+                }
             }
             else if (Input.GetAxis("Horizontal" + playerNumber) < 0
                 && curZCoord > gridLowerZLimit)
             {
-                isButtonPressed = true;
-                MoveLeft();
+                if (OverlapChecker.CheckOverlap(playerNumber-1, "Z", curZCoord - 1, curXCoord))
+                {
+                    isButtonPressed = true;
+                    MoveLeft();
+                }
             }
             else if(Input.GetAxis("Vertical" + playerNumber) > 0
                 && curXCoord > gridLowerXLimit)
             {
-                isButtonPressed = true;
-                MoveUp();
+                if (OverlapChecker.CheckOverlap(playerNumber-1, "X", curXCoord - 1, curZCoord))
+                {
+                    isButtonPressed = true;
+                    MoveUp();
+                }
             }
             else if(Input.GetAxis("Vertical" + playerNumber) < 0
                 && curXCoord < gridUpperXLimit)
             {
-                isButtonPressed = true;
-                MoveDown();
+                if (OverlapChecker.CheckOverlap(playerNumber-1, "X", curXCoord + 1, curZCoord))
+                {
+                    isButtonPressed = true;
+                    MoveDown();
+                }
             }
         }
     }

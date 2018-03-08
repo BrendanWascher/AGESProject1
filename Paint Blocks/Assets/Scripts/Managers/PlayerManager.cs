@@ -63,4 +63,16 @@ public class PlayerManager
         playerInstance.SetActive(false);
         playerInstance.SetActive(true);
     }
+
+    public float GetXCoord()
+    {
+        float X = playerController.curXCoord;
+        return X;
+    }
+
+    public float GetZCoord()
+    {
+        float Z = playerController.curZCoord;
+        return Z;
+    }
 }
