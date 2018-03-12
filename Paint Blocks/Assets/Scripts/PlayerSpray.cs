@@ -14,6 +14,9 @@ public class PlayerSpray : MonoBehaviour
     private Renderer paintRenderer;
 
     [SerializeField]
+    private Rigidbody paintBlock;
+
+    [SerializeField]
     private float coolDown = 5f;
 
     [SerializeField]
@@ -43,9 +46,9 @@ public class PlayerSpray : MonoBehaviour
 
     private void CheckInput()
     {
-        //Debug.Log(isOnCoolDown);
+        Debug.Log(isOnCoolDown);
 
-        if(Input.GetButtonDown("Fire"+playerNumber))
+        if(Input.GetAxis("Fire"+playerNumber)>0)
         {
             if(!isOnCoolDown)
             {

@@ -1243,8 +1243,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99994, y: -553.06134}
-  m_SizeDelta: {x: 779.9999, y: 59.8773}
+  m_AnchoredPosition: {x: 479.99994, y: -572.2511}
+  m_SizeDelta: {x: 779.9999, y: 21.497799}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &651473240
 MonoBehaviour:
@@ -1885,7 +1885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2646,6 +2646,7 @@ GameObject:
   - component: {fileID: 1244053711}
   - component: {fileID: 1244053713}
   - component: {fileID: 1244053712}
+  - component: {fileID: 1244053714}
   m_Layer: 5
   m_Name: CreditsLabel
   m_TagString: Untagged
@@ -2668,8 +2669,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99994, y: -88.95092}
-  m_SizeDelta: {x: 779.9999, y: 47.90184}
+  m_AnchoredPosition: {x: 479.99994, y: -73.59912}
+  m_SizeDelta: {x: 779.9999, y: 17.198238}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1244053712
 MonoBehaviour:
@@ -2710,6 +2711,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1244053710}
+--- !u!114 &1244053714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1244053710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1252940729
 GameObject:
   m_ObjectHideFlags: 0
@@ -3233,7 +3248,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -4090,8 +4105,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99994, y: -318.01227}
-  m_SizeDelta: {x: 779.9999, y: 380.22086}
+  m_AnchoredPosition: {x: 479.99994, y: -321.85022}
+  m_SizeDelta: {x: 779.9999, y: 449.304}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1649407471
 MonoBehaviour:
@@ -4105,7 +4120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4114,7 +4129,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7cb2912222469634ba17a77055919ea8, type: 3}
-    m_FontSize: 22
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 2
@@ -4125,13 +4140,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Credits: blah
+  m_Text: 'Design: Brendan Wascher
 
-    blah blah blah
+    Programming: Brendan Wascher, Unity Tanks Tutorial, Unity Main Menu Tutorial
 
-    Being hella cute: Sydney Winkler
+    Art: Unity Main Menu Tutorial, Unity Particle Systems
 
-    blah'
+    Music: Bensound.com
+
+    Sound Effects: Bfxr.net
+
+    Being hella cute: Sydney Winkler'
 --- !u!222 &1649407472
 CanvasRenderer:
   m_ObjectHideFlags: 0

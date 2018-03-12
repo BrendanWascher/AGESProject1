@@ -11,6 +11,15 @@ public class GameManager : MonoBehaviour
     //class in the tanks tutorial on the Unity Website
     // edits to this will be commented on 
 
+    [SerializeField]
+    private GameObject pausePanel;
+
+    [SerializeField]
+    private GameObject endGamePanel;
+
+    [SerializeField]
+    private Text winnerText;
+
     public int numberOfRoundsToWin = 3;
     public float startDelay = 3f;
     public float endDelay = 3f;
@@ -35,11 +44,16 @@ public class GameManager : MonoBehaviour
 
     // this is to locally keep track of the players score
     private int[] playersScore = new int[4];
+    private bool isPaused = false;
+    private bool pausePressed = false;
 
     void Start ()
     {
         startWait = new WaitForSeconds(startDelay);
         endWait = new WaitForSeconds(endDelay);
+
+        pausePanel.SetActive(false);
+        endGamePanel.SetActive(false);
 
         SpawnAllPlayers();
         SetCameraTargets();
@@ -49,9 +63,10 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GameLoop());
 	}
 
-    private void FixedUpdate()
+    private void Update()
     {
         UpdatePlayerLocations();
+        CheckPause();
     }
 
     private void SpawnAllPlayers()
@@ -102,7 +117,10 @@ public class GameManager : MonoBehaviour
 
         if(gameWinner != null)
         {
-            SceneManager.LoadScene(0);
+            //SceneManager.LoadScene(0);
+            endGamePanel.SetActive(true);
+            winnerText.text = EndGameText();
+            GameTimer.isPaused = true;
         }
         else
         {
@@ -284,5 +302,49 @@ public class GameManager : MonoBehaviour
             OverlapChecker.playerLocations[i, 0] = X;
             OverlapChecker.playerLocations[i, 1] = Z;
         }
+    }
+
+    private void CheckPause()
+    {
+        if (!pausePressed)
+        {
+            if (Input.GetAxis("Pause") > 0)
+            {
+                // this is so it doesn't think pause is being
+                // pressed multiple times in a row
+                pausePressed = true;
+
+                if (!isPaused)
+                    PauseGame();
+                else if (isPaused)
+                    UnPauseGame();
+            }
+        }
+        else if(Input.GetAxis("Pause") == 0)
+        {
+            pausePressed = false;
+        }
+    }
+
+    private void PauseGame()
+    {
+        DisablePlayerControl();
+        isPaused = true;
+        GameTimer.isPaused = true;
+        pausePanel.SetActive(true);
+    }
+
+    private void UnPauseGame()
+    {
+        EnablePlayerControl();
+        isPaused = false;
+        GameTimer.isPaused = false;
+        pausePanel.SetActive(false);
+    }
+
+    private string EndGameText()
+    {
+        string message = gameWinner.coloredPlayerText + " wins!";
+        return message;
     }
 }

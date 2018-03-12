@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class GameTimer : MonoBehaviour
 {
-    public static float timeRemaining = 90f;
+    public static float timeRemaining = 10f;
     public static float startTimer = 3f;
+    public static bool isPaused = false;
     [HideInInspector] public static bool isTimeUp;
     [HideInInspector] public static bool hasStarted;
 	
@@ -24,23 +25,26 @@ public class GameTimer : MonoBehaviour
 
     private static void TimeUp()
     {
-        if (timeRemaining > 0 && hasStarted)
+        if (!isPaused)
         {
-            timeRemaining -= Time.deltaTime;
-        }
-        else if (startTimer <= 0 && !hasStarted)
-        {
-            hasStarted = true;
-        }
-        else if (!hasStarted)
-        {
-            startTimer -= Time.deltaTime;
-        }
-        else
-        {
-            isTimeUp = true;
-            timeRemaining = 90f;
-            hasStarted = false;
+            if (timeRemaining > 0 && hasStarted)
+            {
+                timeRemaining -= Time.deltaTime;
+            }
+            else if (startTimer <= 0 && !hasStarted)
+            {
+                hasStarted = true;
+            }
+            else if (!hasStarted)
+            {
+                startTimer -= Time.deltaTime;
+            }
+            else
+            {
+                isTimeUp = true;
+                timeRemaining = 10f;
+                hasStarted = false;
+            }
         }
 
         //Debug.Log(timeRemaining);
