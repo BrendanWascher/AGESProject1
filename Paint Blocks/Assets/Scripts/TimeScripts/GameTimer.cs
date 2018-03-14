@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameTimer : MonoBehaviour
 {
-    public static float timeRemaining = 10f;
+    public static float timeRemaining = 3f;
     public static float startTimer = 3f;
     public static bool isPaused = false;
     [HideInInspector] public static bool isTimeUp;
@@ -42,7 +42,7 @@ public class GameTimer : MonoBehaviour
             else
             {
                 isTimeUp = true;
-                timeRemaining = 10f;
+                timeRemaining = 3f;
                 hasStarted = false;
             }
         }

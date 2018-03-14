@@ -24,8 +24,9 @@ public class PlayerSpray : MonoBehaviour
 
     private ParticleSystemRenderer sprayColor;
 
-    string lastDirectionMoved;
+    public static bool isPaused = false;
 
+    private string lastDirectionMoved;
     private bool isOnCoolDown = false;
     private int playerNumber;
     private float timer;
@@ -48,7 +49,7 @@ public class PlayerSpray : MonoBehaviour
     {
         Debug.Log(isOnCoolDown);
 
-        if(Input.GetAxis("Fire"+playerNumber)>0)
+        if(Input.GetButtonDown("Fire"+playerNumber) && !isPaused)
         {
             if(!isOnCoolDown)
             {
@@ -102,7 +103,7 @@ public class PlayerSpray : MonoBehaviour
         Debug.Log("Sprayed towards the " + lastDirectionMoved);
         spray.Play();
 
-        paintRenderer.transform.Translate(0f, -.33f, 0f);
+        paintRenderer.transform.Translate(0f, -.1f, 0f);
         for (int i = 0; i < 4; i++)
         {
             paintRenderer.transform.Translate(0f, 0f, 1f);

@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     private GameObject pausePanel;
 
     [SerializeField]
+    private GameObject confirmationPanel;
+
+    [SerializeField]
     private GameObject endGamePanel;
 
     [SerializeField]
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
     private int[] playersScore = new int[4];
     private bool isPaused = false;
     private bool pausePressed = false;
+    private bool isRoundOver = false;
 
     void Start ()
     {
@@ -121,6 +125,7 @@ public class GameManager : MonoBehaviour
             endGamePanel.SetActive(true);
             winnerText.text = EndGameText();
             GameTimer.isPaused = true;
+            isRoundOver = true;
         }
         else
         {
@@ -145,6 +150,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator RoundPlaying()
     {
         EnablePlayerControl();
+        isRoundOver = false;
 
         messageText.text = string.Empty;
 
@@ -157,6 +163,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator RoundEnding()
     {
         DisablePlayerControl();
+        isRoundOver = true;
 
         roundWinner = GetRoundWinner();
 
@@ -306,7 +313,7 @@ public class GameManager : MonoBehaviour
 
     private void CheckPause()
     {
-        if (!pausePressed)
+        if (!pausePressed && !isRoundOver)
         {
             if (Input.GetAxis("Pause") > 0)
             {
@@ -331,6 +338,7 @@ public class GameManager : MonoBehaviour
         DisablePlayerControl();
         isPaused = true;
         GameTimer.isPaused = true;
+        PlayerSpray.isPaused = true;
         pausePanel.SetActive(true);
     }
 
@@ -339,6 +347,8 @@ public class GameManager : MonoBehaviour
         EnablePlayerControl();
         isPaused = false;
         GameTimer.isPaused = false;
+        PlayerSpray.isPaused = false;
+        confirmationPanel.SetActive(false);
         pausePanel.SetActive(false);
     }
 
@@ -346,5 +356,13 @@ public class GameManager : MonoBehaviour
     {
         string message = gameWinner.coloredPlayerText + " wins!";
         return message;
+    }
+
+    public void Replay()
+    {
+        endGamePanel.SetActive(false);
+        GameTimer.isPaused = false;
+        GameTimer.timeRemaining = startDelay;
+        isRoundOver = false;
     }
 }
