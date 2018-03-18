@@ -20,6 +20,9 @@ public class PlayerSpray : MonoBehaviour
     private float coolDown = 5f;
 
     [SerializeField]
+    private float movementSpeedTimer = 1f;
+
+    [SerializeField]
     private ParticleSystem spray;
 
     private ParticleSystemRenderer sprayColor;
@@ -30,6 +33,8 @@ public class PlayerSpray : MonoBehaviour
     private bool isOnCoolDown = false;
     private int playerNumber;
     private float timer;
+    private float movementTimer;
+    private bool isFirstMove, isSecondMove, isThirdmove, isFourthMove = true;
 
 	void Start ()
     {
@@ -41,13 +46,12 @@ public class PlayerSpray : MonoBehaviour
 	void Update ()
     {
         lastDirectionMoved = player.lastDirectionMoved;
-        paintRenderer.material = player.playerMaterial;
         CheckInput();
 	}
 
     private void CheckInput()
     {
-        Debug.Log(isOnCoolDown);
+        //Debug.Log(isOnCoolDown);
 
         if(Input.GetButtonDown("Fire"+playerNumber) && !isPaused)
         {
@@ -79,8 +83,27 @@ public class PlayerSpray : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("No longer on cooldown");
+        //Debug.Log("No longer on cooldown");
         isOnCoolDown = false;
+    }
+
+    private IEnumerator MoveSpray(float d1, float d2, float d3, 
+        float r1, float r2, float r3)
+    {
+        movementTimer = 0f;
+
+        while(!MovementTimer(d1/4, d2/4, d3/4))
+        {
+            paintRenderer.material = player.playerMaterial;
+            yield return null;
+        }
+
+        paintRenderer.transform.Translate(-d1, -d2, -d3);
+        paintRenderer.transform.Rotate(-r1, -r2, -r3);
+        isFirstMove = true;
+        isSecondMove = true;
+        isThirdmove = true;
+        isFourthMove = true;
     }
 
     private bool CoolDownTimer()
@@ -96,6 +119,46 @@ public class PlayerSpray : MonoBehaviour
         }
     }
 
+    private bool MovementTimer(float d1, float d2, float d3)
+    {
+        movementTimer += Time.deltaTime;
+        if (movementTimer < movementSpeedTimer)
+        {
+            if (movementTimer > ((3 / 4) * movementSpeedTimer) && isFirstMove)
+            {
+                paintRenderer.transform.Translate(d1, d2, d3);
+                isFirstMove = false;
+                return false;
+            }
+            else if (movementTimer > ((1 / 2) * movementTimer) && isSecondMove)
+            {
+                paintRenderer.transform.Translate(d1, d2, d3);
+                isSecondMove = false;
+                return false;
+            }
+            else if(movementTimer > ((1/4) * movementTimer) && isThirdmove)
+            {
+                paintRenderer.transform.Translate(d1, d2, d3);
+                isThirdmove = false;
+                return false;
+            }
+            else if(movementTimer < ((1/4)*movementTimer) && isFourthMove)
+            {
+                paintRenderer.transform.Translate(d1, d2, d3);
+                isFourthMove = false;
+                return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     private void SprayRight()
     {
         // don't rotate object
@@ -103,6 +166,9 @@ public class PlayerSpray : MonoBehaviour
         Debug.Log("Sprayed towards the " + lastDirectionMoved);
         spray.Play();
 
+        StartCoroutine(MoveSpray(0f, 0f, 4f, 0f, 0f, 0f));
+
+        /*
         paintRenderer.transform.Translate(0f, -.1f, 0f);
         for (int i = 0; i < 4; i++)
         {
@@ -110,6 +176,7 @@ public class PlayerSpray : MonoBehaviour
         }
         paintRenderer.transform.Translate(0f, .33f, 0f);
         paintRenderer.transform.Translate(0f, 0f, -4f);
+        */
 
         // don't rotate object back
     }
@@ -122,6 +189,9 @@ public class PlayerSpray : MonoBehaviour
         Debug.Log("Sprayed towards the " + lastDirectionMoved);
         spray.Play();
 
+        StartCoroutine(MoveSpray(0f,0f,4f,0f,180f,0f));
+
+        /*
         paintRenderer.transform.Translate(0f, -.33f, 0f);
         for (int i = 0; i < 4; i++)
         {
@@ -129,9 +199,10 @@ public class PlayerSpray : MonoBehaviour
         }
         paintRenderer.transform.Translate(0f, .33f, 0f);
         paintRenderer.transform.Translate(0f, 0f, -4f);
+        */
 
         // rotate object -180 in y
-        paintSpray.transform.Rotate(0, -180, 0);
+        //paintSpray.transform.Rotate(0, -180, 0);
     }
 
     private void SprayUp()
@@ -142,6 +213,9 @@ public class PlayerSpray : MonoBehaviour
         Debug.Log("Sprayed towards the " + lastDirectionMoved);
         spray.Play();
 
+        StartCoroutine(MoveSpray(0f,0f,4f,0f,-90f,0f));
+
+        /*
         paintRenderer.transform.Translate(0f, -.33f, 0f);
         for (int i = 0; i < 4; i++)
         {
@@ -149,9 +223,10 @@ public class PlayerSpray : MonoBehaviour
         }
         paintRenderer.transform.Translate(0f, .33f, 0f);
         paintRenderer.transform.Translate(0f, 0f, -4f);
+        */
 
         // rotate object 90 in y
-        paintSpray.transform.Rotate(0, 90, 0, Space.World);
+        //paintSpray.transform.Rotate(0, 90, 0, Space.World);
     }
 
     private void SprayDown()
@@ -162,6 +237,9 @@ public class PlayerSpray : MonoBehaviour
         Debug.Log("Sprayed towards the " + lastDirectionMoved);
         spray.Play();
 
+        StartCoroutine(MoveSpray(0f,0f,4f,0f,90f,0f));
+
+        /*
         paintRenderer.transform.Translate(0f, -.33f, 0f);
         for (int i = 0; i < 4; i++)
         {
@@ -169,9 +247,10 @@ public class PlayerSpray : MonoBehaviour
         }
         paintRenderer.transform.Translate(0f, .33f, 0f);
         paintRenderer.transform.Translate(0f, 0f, -4f);
+        */
 
         // rotate object -90 in y
-        paintSpray.transform.Rotate(0, -90, 0);
+        //paintSpray.transform.Rotate(0, -90, 0);
     }
 
     // make spray IEnumerator

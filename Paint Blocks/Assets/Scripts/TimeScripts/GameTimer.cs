@@ -1,20 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameTimer : MonoBehaviour
 {
     public static float timeRemaining = 3f;
     public static float startTimer = 3f;
+
+    public static float setTimeRemaining = 90f;
+
     public static bool isPaused = false;
     [HideInInspector] public static bool isTimeUp;
     [HideInInspector] public static bool hasStarted;
-	
+
 	void Start ()
     {
         isTimeUp = false;
         hasStarted = false;
+        timeRemaining = setTimeRemaining;
+        //thisTimerSound = timeSound.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -42,7 +46,7 @@ public class GameTimer : MonoBehaviour
             else
             {
                 isTimeUp = true;
-                timeRemaining = 3f;
+                timeRemaining = setTimeRemaining;
                 hasStarted = false;
             }
         }

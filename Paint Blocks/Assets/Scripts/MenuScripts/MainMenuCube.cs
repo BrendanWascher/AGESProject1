@@ -68,4 +68,18 @@ public class MainMenuCube : MonoBehaviour
             //this.gameObject.transform.Rotate(-90f, 0f, 0f);
         }
     }
+
+    public void RotateToReadyUpPanel(bool isTo)
+    {
+        if(isTo)
+        {
+            animator.SetBool("isGoingToReady", true);
+            //this.gameObject.transform.Rotate(-90f, 0f, 0f);
+        }
+        else
+        {
+            animator.SetBool("isGoingToReady", false);
+            //this.gameObject.transform.Rotate(90f, 0f, 0f);
+        }
+    }
 }

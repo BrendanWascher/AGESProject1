@@ -28,7 +28,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1093822297027642
 GameObject:
   m_ObjectHideFlags: 1
@@ -604,7 +604,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1685347088543888}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4780220872056684}
@@ -1436,7 +1436,8 @@ AudioSource:
   m_GameObject: {fileID: 1766707715059550}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243151157045040886, guid: caadc8b11fc052b42b413da0ed41cde0,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 8f3473a8736990b47af004e74580b263, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
@@ -1543,6 +1544,7 @@ MonoBehaviour:
   paintBlock: {fileID: 54773391967477764, guid: a828d89f8f0ebf942a9b1bf2654dd348,
     type: 2}
   coolDown: 5
+  movementSpeedTimer: 1
   spray: {fileID: 198600374942365464}
 --- !u!114 &114129789163871502
 MonoBehaviour:
@@ -1752,7 +1754,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -725248296
+  randomSeed: -659137600
   InitialModule:
     serializedVersion: 3
     enabled: 1

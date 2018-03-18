@@ -139,11 +139,14 @@ public class GameManager : MonoBehaviour
         ResetFloor();   //needed to reset map back to original values
         ResetAllPlayers();
         DisablePlayerControl();
+        isRoundOver = true;
 
         cameraController.SetStartPositionAndSize();
         roundNumber++;
         messageText.text = "Round " + roundNumber;
 
+        GameTimer.isPaused = false;
+        GameTimer.startTimer = startDelay;
         yield return startWait;
     }
 
@@ -172,9 +175,6 @@ public class GameManager : MonoBehaviour
             roundWinner.numberOfWins++;
         }
 
-        GameTimer.startTimer = startDelay + endDelay;   //reset start timer
-        GameTimer.isTimeUp = false; // reset so that time is not up
-
         gameWinner = GetGameWinner();
 
         string message = EndMessage();
@@ -182,6 +182,8 @@ public class GameManager : MonoBehaviour
 
         roundWinner = null;
 
+        GameTimer.startTimer = endDelay;   //reset start timer
+        GameTimer.isTimeUp = false; // reset so that time is not up
         yield return endWait;
     }
 
@@ -360,9 +362,8 @@ public class GameManager : MonoBehaviour
 
     public void Replay()
     {
-        endGamePanel.SetActive(false);
-        GameTimer.isPaused = false;
-        GameTimer.timeRemaining = startDelay;
-        isRoundOver = false;
+        //endGamePanel.SetActive(false);
+        //reload this scene
+        SceneManager.LoadScene(1);
     }
 }
