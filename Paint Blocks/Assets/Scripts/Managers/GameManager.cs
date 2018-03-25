@@ -356,7 +356,7 @@ public class GameManager : MonoBehaviour
 
     private string EndGameText()
     {
-        string message = gameWinner.coloredPlayerText + " wins!";
+        string message = "Player "+gameWinner.playerNumber + " wins!";
         return message;
     }
 

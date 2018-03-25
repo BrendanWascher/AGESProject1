@@ -7,7 +7,7 @@ public class GameTimer : MonoBehaviour
     public static float timeRemaining = 3f;
     public static float startTimer = 3f;
 
-    public static float setTimeRemaining = 90f;
+    public static float setTimeRemaining = 120f;
 
     public static bool isPaused = false;
     [HideInInspector] public static bool isTimeUp;
