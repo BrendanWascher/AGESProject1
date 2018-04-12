@@ -1,4 +1,4 @@
-WindowsStandalone
+WebGL
 SceneListBegin?
 Assets/Scenes/MainMenu.unity
 Assets/Scenes/Level1.unity
